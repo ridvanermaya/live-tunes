@@ -11,5 +11,15 @@ namespace LiveTunes.WebAPI.Models
         [Display(Name = "Address Line 1")]
         public string AddressLine1 { get; set; }
         [Display(Name = "Address Line 2")]
+        public string AddressLine2 { get; set; }
+        [Display(Name = "City")]
+        public string City { get; set; }
+        [Display(Name = "State")]
+        public string State { get; set; }
+        [Display(Name = "Zip Code")]
+        public int ZipCode { get; set; }
+        [ForeignKey(nameof(Business))]
+        public int BusinessId { get; set; }
+        public BusinessProfile Business { get; set; }
     }
 }
