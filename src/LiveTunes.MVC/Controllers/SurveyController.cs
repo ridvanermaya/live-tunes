@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LiveTunes.MVC.Models;
+using LiveTunes.MVC.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,13 +11,18 @@ namespace LiveTunes.MVC.Controllers
 {
     public class SurveyController : Controller
     {
+        private ApplicationDbContext context;
+        SurveyController()
+        {
+            context = new ApplicationDbContext();
+        }
+
         // GET: Survey
         public ActionResult Index()
         {
             return View();
         }
-
-        // GET: Survey/Details/5
+        
         public ActionResult Details(int id)
         {
             return View();
