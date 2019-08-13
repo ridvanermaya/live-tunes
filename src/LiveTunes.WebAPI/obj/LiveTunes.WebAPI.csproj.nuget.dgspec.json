@@ -1,28 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/redone/git/DevCodeCamp/Week_10/Projects/live-tunes/src/LiveTunes.WebAPI/LiveTunes.WebAPI.csproj": {}
+    "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.WebAPI\\LiveTunes.WebAPI.csproj": {}
   },
   "projects": {
-    "/Users/redone/git/DevCodeCamp/Week_10/Projects/live-tunes/src/LiveTunes.WebAPI/LiveTunes.WebAPI.csproj": {
+    "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.WebAPI\\LiveTunes.WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/redone/git/DevCodeCamp/Week_10/Projects/live-tunes/src/LiveTunes.WebAPI/LiveTunes.WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.WebAPI\\LiveTunes.WebAPI.csproj",
         "projectName": "LiveTunes.WebAPI",
-        "projectPath": "/Users/redone/git/DevCodeCamp/Week_10/Projects/live-tunes/src/LiveTunes.WebAPI/LiveTunes.WebAPI.csproj",
-        "packagesPath": "/Users/redone/.nuget/packages/",
-        "outputPath": "/Users/redone/git/DevCodeCamp/Week_10/Projects/live-tunes/src/LiveTunes.WebAPI/obj/",
+        "projectPath": "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.WebAPI\\LiveTunes.WebAPI.csproj",
+        "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/redone/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

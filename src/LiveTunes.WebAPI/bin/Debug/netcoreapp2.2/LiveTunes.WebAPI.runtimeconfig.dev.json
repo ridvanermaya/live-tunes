@@ -1,9 +1,9 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/Users/redone/.dotnet/store/|arch|/|tfm|",
-      "/Users/redone/.nuget/packages",
-      "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+      "C:\\Users\\alexa\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\alexa\\.nuget\\packages",
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ]
   }
 }
