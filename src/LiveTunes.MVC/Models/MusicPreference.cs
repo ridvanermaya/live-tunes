@@ -6,6 +6,9 @@ namespace LiveTunes.MVC.Models
     [Table("Music Preferences")]
     public class MusicPreference
     {
+        [ForeignKey(nameof(User))]
+        public int UserId { get; set; }
+        public UserProfile User { get; set; }
         [Key]
         public int MusicPreferenceId { get; set; }
         [Display(Name = "Artist Name")]
