@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj": {}
+    "C:\\Users\\Vincent\\Documents\\SCHOOL\\tunes\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj": {
+    "C:\\Users\\Vincent\\Documents\\SCHOOL\\tunes\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj",
+        "projectUniqueName": "C:\\Users\\Vincent\\Documents\\SCHOOL\\tunes\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj",
         "projectName": "LiveTunes.MVC",
-        "projectPath": "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj",
-        "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.MVC\\obj\\",
+        "projectPath": "C:\\Users\\Vincent\\Documents\\SCHOOL\\tunes\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj",
+        "packagesPath": "C:\\Users\\Vincent\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Vincent\\Documents\\SCHOOL\\tunes\\live-tunes\\src\\LiveTunes.MVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vincent\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

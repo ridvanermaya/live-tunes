@@ -111,3 +111,14 @@ C:\Users\alexa\source\repos\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2
 C:\Users\alexa\source\repos\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\LiveTunes.MVC.csproj.CopyComplete
 C:\Users\alexa\source\repos\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Event\View.g.cshtml.cs
 >>>>>>> 0be27fe5f84be25c20937aa57f490c2f768423ef
+C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Comment\Create.g.cshtml.cs
+C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Comment\Delete.g.cshtml.cs
+C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Comment\Details.g.cshtml.cs
+C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Comment\Edit.g.cshtml.cs
+C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Comment\Index.g.cshtml.cs
+C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Event\View.g.cshtml.cs
+C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Like\Create.g.cshtml.cs
+C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Like\Delete.g.cshtml.cs
+C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Like\Details.g.cshtml.cs
+C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Like\Edit.g.cshtml.cs
+C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Like\Index.g.cshtml.cs

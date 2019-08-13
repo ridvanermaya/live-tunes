@@ -32,8 +32,8 @@ namespace LiveTunes.MVC.Controllers
 
         public async void GetSongs(string genre)
         {
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("jsonp"));
-            HttpResponseMessage response = await client.GetAsync("http://itunes.apple.com/search?term=Jack+Johnson");
+            //client.DefaultRequestHeaders.Add(new MediaTypeWithQualityHeaderValue("jsonp"));
+            HttpResponseMessage response = await client.GetAsync("http://itunes.apple.com/search?term=Jack+Johnson?callback=?");
             suggestedSongs = await response.Content.ReadAsAsync<String>();
         }
 
