@@ -1,93 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using LiveTunes.MVC.Models;
+using System.Net.Http.Headers;
+using System.Diagnostics;
+
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace LiveTunes.MVC.Controllers
 {
     public class EventController : Controller
     {
-        // GET: Event
-        public ActionResult Index()
+        private static readonly HttpClient client;
+        /*public IEnumerable<Event> events;*/
+        static EventController()
         {
-            return View();
+            client = new HttpClient();    
         }
 
-        // GET: Event/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Event/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Event/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        static async Task GetEvents()
         {
             try
             {
-                // TODO: Add insert logic here
+                var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue");
+                //requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                return RedirectToAction(nameof(Index));
+                HttpResponseMessage response = await client.SendAsync(requestMessage);
+
+                Debug.WriteLine(response.Content.ReadAsStringAsync());
+
             }
-            catch
+            catch(HttpRequestException e)
             {
-                return View();
+                Debug.WriteLine(e.Message);
             }
         }
 
-        // GET: Event/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Index()
         {
+            await GetEvents();
             return View();
-        }
-
-        // POST: Event/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Event/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Event/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
