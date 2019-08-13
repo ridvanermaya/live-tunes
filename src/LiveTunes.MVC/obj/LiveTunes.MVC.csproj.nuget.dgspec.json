@@ -1,28 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/redone/git/DevCodeCamp/Week_10/Projects/live-tunes/src/LiveTunes.MVC/LiveTunes.MVC.csproj": {}
+    "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj": {}
   },
   "projects": {
-    "/Users/redone/git/DevCodeCamp/Week_10/Projects/live-tunes/src/LiveTunes.MVC/LiveTunes.MVC.csproj": {
+    "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/redone/git/DevCodeCamp/Week_10/Projects/live-tunes/src/LiveTunes.MVC/LiveTunes.MVC.csproj",
+        "projectUniqueName": "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj",
         "projectName": "LiveTunes.MVC",
-        "projectPath": "/Users/redone/git/DevCodeCamp/Week_10/Projects/live-tunes/src/LiveTunes.MVC/LiveTunes.MVC.csproj",
-        "packagesPath": "/Users/redone/.nuget/packages/",
-        "outputPath": "/Users/redone/git/DevCodeCamp/Week_10/Projects/live-tunes/src/LiveTunes.MVC/obj/",
+        "projectPath": "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj",
+        "packagesPath": "C:\\Users\\alexa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alexa\\source\\repos\\live-tunes\\src\\LiveTunes.MVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/redone/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\alexa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -59,6 +61,10 @@
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.2.3, )"
             }
           },
           "imports": [
