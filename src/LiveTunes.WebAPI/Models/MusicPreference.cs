@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace LiveTunes.WebAPI.Models
 {
     [Table("Music Preferences")]
-    public class MusicPreferences
+    public class MusicPreference
     {
         [Key]
         public int MusicPreferenceId { get; set; }
