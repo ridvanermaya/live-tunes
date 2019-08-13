@@ -2943,6 +2943,11 @@
   "RootNamespace": "LiveTunes.MVC",
   "Documents": [
     {
+      "FilePath": "Views/Like/Details.cshtml",
+      "TargetPath": "Views/Like/Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Areas/Identity/Pages/Account/Login.cshtml",
       "TargetPath": "Areas/Identity/Pages/Account/Login.cshtml",
       "FileKind": "mvc"
@@ -2973,8 +2978,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Like/Create.cshtml",
+      "TargetPath": "Views/Like/Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Shared/_CookieConsentPartial.cshtml",
       "TargetPath": "Views/Shared/_CookieConsentPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Like/Delete.cshtml",
+      "TargetPath": "Views/Like/Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Like/Edit.cshtml",
+      "TargetPath": "Views/Like/Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Comment/Edit.cshtml",
+      "TargetPath": "Views/Comment/Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2988,8 +3013,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Comment/Index.cshtml",
+      "TargetPath": "Views/Comment/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Home/Index.cshtml",
       "TargetPath": "Views/Home/Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Comment/Delete.cshtml",
+      "TargetPath": "Views/Comment/Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2998,8 +3033,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Comment/Create.cshtml",
+      "TargetPath": "Views/Comment/Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Areas/Identity/Pages/Account/_ViewImports.cshtml",
       "TargetPath": "Areas/Identity/Pages/Account/_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Comment/Details.cshtml",
+      "TargetPath": "Views/Comment/Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -3015,6 +3060,11 @@
     {
       "FilePath": "Views/Shared/Error.cshtml",
       "TargetPath": "Views/Shared/Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Like/Index.cshtml",
+      "TargetPath": "Views/Like/Index.cshtml",
       "FileKind": "mvc"
     },
     {

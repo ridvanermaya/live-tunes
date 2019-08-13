@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -19,17 +20,20 @@ namespace LiveTunes.MVC.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
         }
 
         [BindProperty]
@@ -61,6 +65,20 @@ namespace LiveTunes.MVC.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
+        public async Task CheckRoles()
+        {
+            var roles = _roleManager.Roles.ToList();
+            
+            if (!roles.Any(x => x.Name.Equals("User")))
+            {
+                await _roleManager.CreateAsync( new IdentityRole() { Name = "User" });
+            }
+            if (!roles.Any(x => x.Name.Equals("Business")))
+            {
+                await _roleManager.CreateAsync( new IdentityRole() { Name = "Business"});
+            }
+        }
+        
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
@@ -70,6 +88,10 @@ namespace LiveTunes.MVC.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
+                    await CheckRoles();
+
+                    await _userManager.AddToRoleAsync(user, "User");
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -83,7 +105,9 @@ namespace LiveTunes.MVC.Areas.Identity.Pages.Account
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect(returnUrl);
+
+                    // Redirecting User to Create Profile
+                    return RedirectToAction("Create", "UserProfile");
                 }
                 foreach (var error in result.Errors)
                 {
