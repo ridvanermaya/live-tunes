@@ -9,85 +9,31 @@ namespace LiveTunes.MVC.Controllers
 {
     public class MusicPreferenceController : Controller
     {
+        //Main View Where it Goes thru songs based on genres they like
         public ActionResult Index()
         {
-
             return View();
+        }
+
+        public ActionResult Like()
+        {
+            return RedirectToAction("Index");
+        }
+
+
+        //Will write Some Jquery to go along with this
+        //Pretty Much adding the song liked to MusicPreferences table
+        [HttpPost]
+        public void Like(JsonResult Song)
+        {
+            //return RedirectToAction(nameof(Index));
         }
 
         // GET: MusicPreference/Details/5
+        // Would get music preferences by percentage of genre
         public ActionResult Details(int id)
         {
             return View();
-        }
-
-        // GET: MusicPreference/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: MusicPreference/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: MusicPreference/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: MusicPreference/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: MusicPreference/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: MusicPreference/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
