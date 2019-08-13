@@ -37,7 +37,7 @@ namespace LiveTunes.WebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Like>> GetLike(int likeId)
         {
-            var like = await _context.Likes.FirstOrDefaultAsync(x => x.LikeId == likeId);
+            var like = await _context.Likes.FindAsync(likeId);
 
             if (like == null)
             {
