@@ -4,22 +4,23 @@ using LiveTunes.MVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace LiveTunes.MVC.Data.Migrations
+namespace LiveTunes.MVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190813132214_ModelsAdded")]
+    partial class ModelsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
-#pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("LiveTunes.MVC.Models.Address", b =>
+            modelBuilder.Entity("LiveTunes.WebAPI.Models.Address", b =>
                 {
                     b.Property<int>("AddressId")
                         .ValueGeneratedOnAdd()
@@ -44,7 +45,7 @@ namespace LiveTunes.MVC.Data.Migrations
                     b.ToTable("Address");
                 });
 
-            modelBuilder.Entity("LiveTunes.MVC.Models.BusinessProfile", b =>
+            modelBuilder.Entity("LiveTunes.WebAPI.Models.BusinessProfile", b =>
                 {
                     b.Property<int>("BusinessProfileId")
                         .ValueGeneratedOnAdd()
@@ -61,7 +62,7 @@ namespace LiveTunes.MVC.Data.Migrations
                     b.ToTable("Business Profile");
                 });
 
-            modelBuilder.Entity("LiveTunes.MVC.Models.Comment", b =>
+            modelBuilder.Entity("LiveTunes.WebAPI.Models.Comment", b =>
                 {
                     b.Property<int>("CommentId")
                         .ValueGeneratedOnAdd()
@@ -84,7 +85,7 @@ namespace LiveTunes.MVC.Data.Migrations
                     b.ToTable("Comment");
                 });
 
-            modelBuilder.Entity("LiveTunes.MVC.Models.Event", b =>
+            modelBuilder.Entity("LiveTunes.WebAPI.Models.Event", b =>
                 {
                     b.Property<int>("EventId")
                         .ValueGeneratedOnAdd()
@@ -105,7 +106,7 @@ namespace LiveTunes.MVC.Data.Migrations
                     b.ToTable("Event");
                 });
 
-            modelBuilder.Entity("LiveTunes.MVC.Models.Like", b =>
+            modelBuilder.Entity("LiveTunes.WebAPI.Models.Like", b =>
                 {
                     b.Property<int>("LikeId")
                         .ValueGeneratedOnAdd()
@@ -124,7 +125,7 @@ namespace LiveTunes.MVC.Data.Migrations
                     b.ToTable("Like");
                 });
 
-            modelBuilder.Entity("LiveTunes.MVC.Models.MusicPreference", b =>
+            modelBuilder.Entity("LiveTunes.WebAPI.Models.MusicPreference", b =>
                 {
                     b.Property<int>("MusicPreferenceId")
                         .ValueGeneratedOnAdd()
@@ -141,7 +142,7 @@ namespace LiveTunes.MVC.Data.Migrations
                     b.ToTable("Music Preferences");
                 });
 
-            modelBuilder.Entity("LiveTunes.MVC.Models.Survey", b =>
+            modelBuilder.Entity("LiveTunes.WebAPI.Models.Survey", b =>
                 {
                     b.Property<int>("SurverId")
                         .ValueGeneratedOnAdd()
@@ -164,7 +165,7 @@ namespace LiveTunes.MVC.Data.Migrations
                     b.ToTable("Survey");
                 });
 
-            modelBuilder.Entity("LiveTunes.MVC.Models.UserProfile", b =>
+            modelBuilder.Entity("LiveTunes.WebAPI.Models.UserProfile", b =>
                 {
                     b.Property<int>("UserProfileId")
                         .ValueGeneratedOnAdd()
@@ -348,56 +349,56 @@ namespace LiveTunes.MVC.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("LiveTunes.MVC.Models.Address", b =>
+            modelBuilder.Entity("LiveTunes.WebAPI.Models.Address", b =>
                 {
-                    b.HasOne("LiveTunes.MVC.Models.BusinessProfile", "Business")
+                    b.HasOne("LiveTunes.WebAPI.Models.BusinessProfile", "Business")
                         .WithMany()
                         .HasForeignKey("BusinessId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("LiveTunes.MVC.Models.BusinessProfile", b =>
+            modelBuilder.Entity("LiveTunes.WebAPI.Models.BusinessProfile", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("LiveTunes.MVC.Models.Comment", b =>
+            modelBuilder.Entity("LiveTunes.WebAPI.Models.Comment", b =>
                 {
-                    b.HasOne("LiveTunes.MVC.Models.Event", "Event")
+                    b.HasOne("LiveTunes.WebAPI.Models.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("LiveTunes.MVC.Models.UserProfile", "UserProfile")
+                    b.HasOne("LiveTunes.WebAPI.Models.UserProfile", "UserProfile")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("LiveTunes.MVC.Models.Like", b =>
+            modelBuilder.Entity("LiveTunes.WebAPI.Models.Like", b =>
                 {
-                    b.HasOne("LiveTunes.MVC.Models.Event", "Event")
+                    b.HasOne("LiveTunes.WebAPI.Models.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("LiveTunes.MVC.Models.UserProfile", "UserProfile")
+                    b.HasOne("LiveTunes.WebAPI.Models.UserProfile", "UserProfile")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("LiveTunes.MVC.Models.Survey", b =>
+            modelBuilder.Entity("LiveTunes.WebAPI.Models.Survey", b =>
                 {
-                    b.HasOne("LiveTunes.MVC.Models.UserProfile", "User")
+                    b.HasOne("LiveTunes.WebAPI.Models.UserProfile", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("LiveTunes.MVC.Models.UserProfile", b =>
+            modelBuilder.Entity("LiveTunes.WebAPI.Models.UserProfile", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
@@ -448,7 +449,6 @@ namespace LiveTunes.MVC.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
-#pragma warning restore 612, 618
         }
     }
 }
