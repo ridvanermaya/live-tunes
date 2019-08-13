@@ -46,5 +46,37 @@ namespace LiveTunes.WebAPI.Controllers
 
             return CreatedAtAction(nameof(GetComment), new { id = comment.CommentId }, comment);
         }
+
+        // PUT: api/Comment/id
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutComment(int commentId, Comment comment)
+        {
+            if (commentId != comment.CommentId)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(comment).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        // DELETE: api/Comment/id
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteComment(int commentId)
+        {
+            var comment = await _context.Comments.FindAsync(commentId);
+
+            if (comment == null)
+            {
+                return NotFound();
+            }
+
+            _context.Comments.Remove(comment);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
