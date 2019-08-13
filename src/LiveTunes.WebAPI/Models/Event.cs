@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,6 +15,8 @@ namespace LiveTunes.WebAPI.Models
         public double Longitude { get; set; }
         [Display(Name = "Event Name")]
         public string EventName { get; set; }
+        [Display(Name = "Event Date")]
+        public DateTime DateTime { get; set; }
         [Display(Name = "Genre")]
         public string Genre { get; set; }
     }
