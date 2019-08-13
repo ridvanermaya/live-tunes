@@ -72,3 +72,4 @@ C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\n
 C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\LiveTunes.MVC.csproj.CopyComplete
 C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Survey\Index.g.cshtml.cs
 C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Survey\Create.g.cshtml.cs
+C:\Users\Vincent\Documents\SCHOOL\tunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Event\List.g.cshtml.cs
