@@ -2,39 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using LiveTunes.MVC.Models;
-using LiveTunes.MVC.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LiveTunes.MVC.Controllers
 {
-    public class SurveyController : Controller
+    public class EventController : Controller
     {
-        private ApplicationDbContext _context;
-        SurveyController(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
-        // GET: Survey
+        // GET: Event
         public ActionResult Index()
         {
             return View();
         }
-        
+
+        // GET: Event/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Survey/Create
+        // GET: Event/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Survey/Create
+        // POST: Event/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -51,13 +44,13 @@ namespace LiveTunes.MVC.Controllers
             }
         }
 
-        // GET: Survey/Edit/5
+        // GET: Event/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Survey/Edit/5
+        // POST: Event/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -74,13 +67,13 @@ namespace LiveTunes.MVC.Controllers
             }
         }
 
-        // GET: Survey/Delete/5
+        // GET: Event/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Survey/Delete/5
+        // POST: Event/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
