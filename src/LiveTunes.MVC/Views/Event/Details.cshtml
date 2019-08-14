@@ -41,6 +41,12 @@
             @Html.DisplayFor(model => model.Genre)
         </dd>
     </dl>
+    <div>
+        <form method="POST">
+            <input type="button" value="like"/>
+            <input type="hidden" value="@Model.EventId"/>
+        </form>
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.EventId">Edit</a> |

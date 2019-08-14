@@ -59,17 +59,22 @@ namespace LiveTunes.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LikeId,EventId,UserId")] Like like)
+        public async Task<IActionResult> Create([Bind("EventId")] int id)
         {
+            Event likedEvent = _context.Events.Where(x => x.EventId == id).FirstOrDefault();
+            Like likeObject = new Like();
+            likeObject.EventId = id;
+            likeObject.Event = likedEvent;
+            //forget how to do this
+           // likeObject.UserId;
             if (ModelState.IsValid)
             {
-                _context.Add(like);
+                _context.Likes.Add(likeObject);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EventId"] = new SelectList(_context.Events, "EventId", "EventId", like.EventId);
-            ViewData["UserId"] = new SelectList(_context.UserProfiles, "UserProfileId", "UserProfileId", like.UserId);
-            return View(like);
+            
+            return RedirectToAction("Details", "Event", id);
         }
 
         // GET: Like/Edit/5
