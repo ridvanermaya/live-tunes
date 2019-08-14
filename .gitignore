@@ -84,7 +84,7 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
-
+*.ide-wal
 # Chutzpah Test files
 _Chutzpah*
 
