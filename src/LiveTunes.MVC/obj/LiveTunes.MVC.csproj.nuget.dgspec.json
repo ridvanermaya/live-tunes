@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Vincent\\Documents\\SCHOOL\\tunes\\prj\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj": {}
+    "C:\\Users\\lukef\\OneDrive\\Documents\\DevCode Boot camp\\Week 10\\Projects\\live-tunes-master\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Vincent\\Documents\\SCHOOL\\tunes\\prj\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj": {
+    "C:\\Users\\lukef\\OneDrive\\Documents\\DevCode Boot camp\\Week 10\\Projects\\live-tunes-master\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Vincent\\Documents\\SCHOOL\\tunes\\prj\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj",
+        "projectUniqueName": "C:\\Users\\lukef\\OneDrive\\Documents\\DevCode Boot camp\\Week 10\\Projects\\live-tunes-master\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj",
         "projectName": "LiveTunes.MVC",
-        "projectPath": "C:\\Users\\Vincent\\Documents\\SCHOOL\\tunes\\prj\\live-tunes\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj",
-        "packagesPath": "C:\\Users\\Vincent\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Vincent\\Documents\\SCHOOL\\tunes\\prj\\live-tunes\\src\\LiveTunes.MVC\\obj\\",
+        "projectPath": "C:\\Users\\lukef\\OneDrive\\Documents\\DevCode Boot camp\\Week 10\\Projects\\live-tunes-master\\src\\LiveTunes.MVC\\LiveTunes.MVC.csproj",
+        "packagesPath": "C:\\Users\\lukef\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lukef\\OneDrive\\Documents\\DevCode Boot camp\\Week 10\\Projects\\live-tunes-master\\src\\LiveTunes.MVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Vincent\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lukef\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
