@@ -21,6 +21,11 @@ namespace LiveTunes.MVC.Models
         [Display(Name = "Genre")]
         public string Genre { get; set; }
 
+        [NotMapped]
+        public int LikeCount { get; set; }
+        [NotMapped]
+        public bool UserLiked { get; set; }
+
         public virtual List<Like> Likes { get; set; }
     }
 }

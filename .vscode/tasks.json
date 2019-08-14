@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/LiveTunes.WebAPI/LiveTunes.WebAPI.csproj",
+                "${workspaceFolder}/src/LiveTunes.MVC/LiveTunes.MVC.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/LiveTunes.WebAPI/LiveTunes.WebAPI.csproj",
+                "${workspaceFolder}/src/LiveTunes.MVC/LiveTunes.MVC.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/src/LiveTunes.WebAPI/LiveTunes.WebAPI.csproj",
+                "${workspaceFolder}/src/LiveTunes.MVC/LiveTunes.MVC.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],

@@ -11,17 +11,20 @@ using Microsoft.AspNetCore.Http;
 using LiveTunes.MVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.Security.Claims;
 
 namespace LiveTunes.MVC.Controllers
 {
     public class EventController : Controller
     {
         private static HttpClient client;
+        private readonly ApplicationDbContext _context;
 
         /*public IEnumerable<Event> events;*/
         public EventController(ApplicationDbContext context)
         {
             client = new HttpClient();
+            _context = context;
 
             /*if (context.Events.Count() == 0)
             {
@@ -35,9 +38,9 @@ namespace LiveTunes.MVC.Controllers
         {
             try
             {
-               var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue&token=" + EventbriteAPIToken.Token);
+                var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue&token=" + EventbriteAPIToken.Token);
 
-               var x = JsonConvert.DeserializeObject(result);
+                var x = JsonConvert.DeserializeObject(result);
 
             }
             catch (HttpRequestException e)
@@ -50,7 +53,54 @@ namespace LiveTunes.MVC.Controllers
         public async Task<IActionResult> Index()
         {
             await GetEvents();
+            var events = await _context.Events.FirstOrDefaultAsync();
+            Console.WriteLine(events.EventId);
+
             return View();
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var evnt = await _context.Events.FirstOrDefaultAsync(x => x.EventId == id);
+            if (evnt == null) return NotFound();
+
+            var userProfileId = 2;
+
+            evnt.LikeCount = await _context.Likes.CountAsync(x => x.EventId == id);
+            evnt.UserLiked = await _context.Likes.AnyAsync(x => x.EventId == id && x.UserId == userProfileId);
+
+            return View(evnt);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Like(int id)
+        {
+            var evnt = await _context.Events.FirstOrDefaultAsync(x => x.EventId == id);
+            if (evnt == null) return NotFound();
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userProfile = await _context.UserProfiles.FirstOrDefaultAsync(x => x.UserId == userId);
+            // var userProfileId = userProfile.UserProfileId;
+            var userProfileId = 2;
+
+            var like = await _context.Likes.FirstOrDefaultAsync(x => x.UserId == userProfileId && x.EventId == id);
+            if (like != null)
+            {
+                _context.Remove(like);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Details", new { id });
+            }
+
+            like = new Like
+            {
+                EventId = id,
+                UserId = userProfileId
+            };
+
+            _context.Likes.Add(like);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", new { id });
         }
     }
 }
