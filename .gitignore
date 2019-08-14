@@ -220,7 +220,6 @@ ClientBin/
 *.pfx
 *.publishsettings
 orleans.codegen.cs
-
 # Including strong name files can present a security risk 
 # (https://github.com/github/gitignore/pull/2483#issue-259490424)
 #*.snk
@@ -330,3 +329,4 @@ ASALocalRun/
 .mfractor/
 
 EventbriteAPIToken.cs
+src/.vs/LiveTunes/DesignTimeBuild/.dtbcache src/.vs/LiveTunes/v16/.suo src/.vs/LiveTunes/v16/Server/sqlite3/storage.ide src/.vs/LiveTunes/v16/Server/sqlite3/storage.ide-shm src/.vs/LiveTunes/v16/Server/sqlite3/storage.ide-wal
