@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using LiveTunes.MVC.Data;
+using LiveTunes.MVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 
 namespace LiveTunes.MVC.Controllers
@@ -33,8 +36,8 @@ namespace LiveTunes.MVC.Controllers
         public async void GetSongs(string genre)
         {
             //client.DefaultRequestHeaders.Add(new MediaTypeWithQualityHeaderValue("jsonp"));
-            HttpResponseMessage response = await client.GetAsync("http://itunes.apple.com/search?term=Jack+Johnson?callback=?");
-            suggestedSongs = await response.Content.ReadAsAsync<String>();
+            //HttpResponseMessage response = await client.GetAsync("http://itunes.apple.com/search?term=Jack+Johnson?callback=?");
+            //suggestedSongs = await response.Content.ReadAsAsync<String>();
         }
 
         //Main View Where it Goes thru songs based on genres they like
@@ -43,9 +46,20 @@ namespace LiveTunes.MVC.Controllers
             return View(suggestedSongs);
         }
 
-        public ActionResult Like()
+
+        [HttpPost]
+        public async Task Create(string artist, string songName, string genre)
         {
-            return RedirectToAction("Index");
+            MusicPreference preference = new MusicPreference();
+            preference.SongName = songName;
+            preference.ArtistName = artist;
+            preference.Genre = genre;
+            var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _context.UserProfiles.Where(x => x.UserId == userid).FirstOrDefaultAsync();
+            preference.UserId = user.UserProfileId;
+            preference.User = user;
+            await _context.MusicPreferences.AddAsync(preference);
+            return;
         }
 
 
