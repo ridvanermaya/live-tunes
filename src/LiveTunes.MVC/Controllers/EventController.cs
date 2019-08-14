@@ -8,23 +8,25 @@ using Microsoft.AspNetCore.Mvc;
 using LiveTunes.MVC.Models;
 using System.Net.Http.Headers;
 using System.Diagnostics;
-
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Cors;
+using LiveTunes.MVC.Data;
 
 namespace LiveTunes.MVC.Controllers
 {
     public class EventController : Controller
     {
-        private static readonly HttpClient client;
+        private static HttpClient client;
+        private ApplicationDbContext _context;
         /*public IEnumerable<Event> events;*/
-        static EventController()
+        EventController(ApplicationDbContext context)
         {
-            client = new HttpClient();    
-        }
+            _context = context;
+            client = new HttpClient();
 
+        }
         static async Task GetEvents()
         {
             try
@@ -37,10 +39,19 @@ namespace LiveTunes.MVC.Controllers
                 Debug.WriteLine(response.Content.ReadAsStringAsync());
 
             }
-            catch(HttpRequestException e)
+            catch (HttpRequestException e)
             {
                 Debug.WriteLine(e.Message);
             }
+        }
+
+        
+        public async Task<IActionResult> Details(int id)
+        {
+            Event e;
+            e = _context.Events.Where(x => x.EventId == id).FirstOrDefault();
+            
+            return View(e);
         }
 
         public async Task<IActionResult> Index()
