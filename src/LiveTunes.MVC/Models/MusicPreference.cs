@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
 namespace LiveTunes.MVC.Models
 {
     [Table("Music Preferences")]

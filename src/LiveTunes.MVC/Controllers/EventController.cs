@@ -38,9 +38,15 @@ namespace LiveTunes.MVC.Controllers
         {
             try
             {
+<<<<<<< HEAD
                 var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue&token=" + EventbriteAPIToken.Token);
 
                 var x = JsonConvert.DeserializeObject(result);
+=======
+              // var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue&token=" + EventbriteAPIToken.Token);
+
+               // var x = JsonConvert.DeserializeObject(result);
+>>>>>>> 452f050d823e8bdff75261121ea1fe9f559b8e5c
 
             }
             catch (HttpRequestException e)
