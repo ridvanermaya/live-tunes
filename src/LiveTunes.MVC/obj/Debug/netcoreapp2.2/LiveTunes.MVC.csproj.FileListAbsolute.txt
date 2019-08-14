@@ -79,7 +79,6 @@ C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcor
 C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
 C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
 C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
-C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Data\Index.g.cshtml.cs
 C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Event\Details.g.cshtml.cs
 C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Event\List.g.cshtml.cs
 C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\Event\View.g.cshtml.cs

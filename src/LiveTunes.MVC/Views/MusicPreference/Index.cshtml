@@ -5,15 +5,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<h4>MusicPreference</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        @for (int i = 0; i < Model.Count(); i++) {
-            <div>@Model[i]["trackName"];</div>
-        }
         <!---
     <form asp-action="Index">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>

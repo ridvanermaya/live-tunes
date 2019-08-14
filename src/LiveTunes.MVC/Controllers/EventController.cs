@@ -10,7 +10,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using LiveTunes.MVC.Data;
 using Microsoft.EntityFrameworkCore;
-
+using Newtonsoft.Json;
 
 namespace LiveTunes.MVC.Controllers
 {
@@ -23,11 +23,11 @@ namespace LiveTunes.MVC.Controllers
         {
             client = new HttpClient();
 
-            if (context.Events.Count() == 0)
+            /*if (context.Events.Count() == 0)
             {
                 context.Events.Add(new Event { Latitude = 49.2746619, Longitude = -123.10921740000003, EventName = "King Gizzard and the Lizard Wizard" , DateTime = DateTime.Now, Genre = "Sci-Fi"});
                 context.Events.Add(new Event { Latitude = 49.2746619, Longitude = -123.0451041, EventName = "King Gizzard and the Lizard Wizard" , DateTime = DateTime.Now, Genre = "Sci-Fi"});
-            }
+            }*/
         }
 
         static async Task GetEvents()
@@ -35,20 +35,9 @@ namespace LiveTunes.MVC.Controllers
         {
             try
             {
-                string token = "xxxxxxxxxxxxxxxx";
+               // var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue&token=" + EventbriteAPIToken.Token);
 
-                /*var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue/");*/
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-                var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue/");
-
-                var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue");
-                //requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                Debug.WriteLine(result);
-                //://www.eventbriteapi.com/v3/events/search
-
-                // var events = _context.Events.Include(x => x.Likes).Where(x => x.EventId == 5).ToList();
-                // var likes = _context.Likes.Where(x => x.EventId == 5).OrderByDescending(x => x.LikeId).Take(20);
+               // var x = JsonConvert.DeserializeObject(result);
 
             }
             catch (HttpRequestException e)
