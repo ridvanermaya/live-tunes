@@ -2,7 +2,7 @@
     //some ajax here
     $.ajax({
         type: "GET",
-        url: "https://localhost:44303/musicpreference/Create?artist=" + artist + "&song=" + song + "&genre=" + genre; 
+        url: "https://localhost:44303/musicpreference/create?artist=" + artist + "&song=" + song + "&genre=" + genre,
     });
 }
 
