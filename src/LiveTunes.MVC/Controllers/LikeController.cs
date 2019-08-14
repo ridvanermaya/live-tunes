@@ -59,7 +59,7 @@ namespace LiveTunes.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventId")] int id)
+        public async Task<IActionResult> Create(int id)
         {
             Event likedEvent = _context.Events.Where(x => x.EventId == id).FirstOrDefault();
             Like likeObject = new Like();
