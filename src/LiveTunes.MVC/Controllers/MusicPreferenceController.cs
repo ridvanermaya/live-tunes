@@ -23,7 +23,7 @@ namespace LiveTunes.MVC.Controllers
         public MusicPreferenceController(ApplicationDbContext context)
         {
             client = new HttpClient();
-            GetSongs("Rock");
+            // GetSongs("Rock");
             _context = context;
             suggestedSongs = new JArray();
         }
@@ -33,12 +33,12 @@ namespace LiveTunes.MVC.Controllers
             return suggestedSongs;
         }
 
-        public async void GetSongs(string genre)
-        {
-            //client.DefaultRequestHeaders.Add(new MediaTypeWithQualityHeaderValue("jsonp"));
-            //HttpResponseMessage response = await client.GetAsync("http://itunes.apple.com/search?term=Jack+Johnson?callback=?");
-            //suggestedSongs = await response.Content.ReadAsAsync<String>();
-        }
+        // public async void GetSongs(string genre)
+        // {
+        //     client.DefaultRequestHeaders.Add(new MediaTypeWithQualityHeaderValue("jsonp"));
+        //     HttpResponseMessage response = await client.GetAsync("http://itunes.apple.com/search?term=Jack+Johnson?callback=?");
+        //     suggestedSongs = await response.Content.ReadAsAsync<String>();
+        // }
 
         //Main View Where it Goes thru songs based on genres they like
         public ActionResult Index()
