@@ -30,32 +30,7 @@ namespace LiveTunes.MVC.Controllers
             }
         }
 
-        static async Task GetEvents()
-
-        {
-            try
-            {
-                string token = "xxxxxxxxxxxxxxxx";
-
-                /*var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue/");*/
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
-                var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue/");
-
-                var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue");
-                //requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
-
-                Debug.WriteLine(result);
-                //://www.eventbriteapi.com/v3/events/search
-
-                // var events = _context.Events.Include(x => x.Likes).Where(x => x.EventId == 5).ToList();
-                // var likes = _context.Likes.Where(x => x.EventId == 5).OrderByDescending(x => x.LikeId).Take(20);
-
-            }
-            catch (HttpRequestException e)
-            {
-                Debug.WriteLine(e.Message);
-            }
-        }
+       
 
 
         public async Task<IActionResult> Index()

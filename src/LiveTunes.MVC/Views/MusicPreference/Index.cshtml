@@ -1,22 +1,10 @@
-<<<<<<< HEAD
-﻿@model LiveTunes.MVC.Models.MusicPreference
+@model LiveTunes.MVC.Models.MusicPreference
 
-=======
-﻿@model Newtonsoft.Json.Linq.JToken
->>>>>>> bca89d4199afc33d01ad1889da8d6aec3edf9403
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<h4>MusicPreference</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        @for (int i = 0; i < Model.Count(); i++) {
-            <div>@Model[i]["trackName"];</div>
-        }
         <!---
     <form asp-action="Index">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -49,7 +37,7 @@
             <input type="submit" value="Create" class="btn btn-primary" />
         </div>
     </form>-->
-    </div>
+    <!-- </div>
 </div>
 
 <div>
@@ -58,4 +46,4 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+} -->
