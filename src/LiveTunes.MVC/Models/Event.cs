@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,5 +20,7 @@ namespace LiveTunes.MVC.Models
         public DateTime DateTime { get; set; }
         [Display(Name = "Genre")]
         public string Genre { get; set; }
+
+        public virtual List<Like> Likes { get; set; }
     }
 }

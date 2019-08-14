@@ -1,31 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LiveTunes.MVC.Models;
 using System.Net.Http.Headers;
 using System.Diagnostics;
-
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
+using LiveTunes.MVC.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace LiveTunes.MVC.Controllers
 {
     public class EventController : Controller
     {
-        private static readonly HttpClient client;
+        private readonly HttpClient client;
+        private readonly ApplicationDbContext _context;
         /*public IEnumerable<Event> events;*/
-        static EventController()
+        public EventController(ApplicationDbContext context)
         {
-            client = new HttpClient();    
+            client = new HttpClient();
+            _context = context;
+
+            if (_context.Events.Count() == 0)
+            {
+                _context.Events.Add(new Event { Latitude = 49.2746619, Longitude = -123.10921740000003, EventName = "King Gizzard and the Lizard Wizard" , DateTime = DateTime.Now, Genre = "Sci-Fi"});
+                _context.Events.Add(new Event { Latitude = 49.2746619, Longitude = -123.0451041, EventName = "King Gizzard and the Lizard Wizard" , DateTime = DateTime.Now, Genre = "Sci-Fi"});
+            }
         }
 
-        static async Task GetEvents()
+        public async Task GetEvents()
         {
             try
             {
@@ -34,10 +39,13 @@ namespace LiveTunes.MVC.Controllers
 
                 HttpResponseMessage response = await client.SendAsync(requestMessage);
 
+                // var events = _context.Events.Include(x => x.Likes).Where(x => x.EventId == 5).ToList();
+                // var likes = _context.Likes.Where(x => x.EventId == 5).OrderByDescending(x => x.LikeId).Take(20);
+
                 Debug.WriteLine(response.Content.ReadAsStringAsync());
 
             }
-            catch(HttpRequestException e)
+            catch (HttpRequestException e)
             {
                 Debug.WriteLine(e.Message);
             }
