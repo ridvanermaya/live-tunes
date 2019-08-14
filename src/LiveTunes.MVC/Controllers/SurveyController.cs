@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using System.Net.Http;
 using Newtonsoft.Json.Linq;
+using System.Security.Claims;
 
 namespace LiveTunes.MVC.Controllers
 {
@@ -17,7 +18,7 @@ namespace LiveTunes.MVC.Controllers
         private ApplicationDbContext _context;
         private HttpClient client;
         //private JToken suggestedSongs;
-        SurveyController(ApplicationDbContext context)
+        public SurveyController(ApplicationDbContext context)
         {
             client = new HttpClient();
             _context = context;
@@ -43,7 +44,17 @@ namespace LiveTunes.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Survey survey)
         {
-            _context.AddAsync(survey);
+
+            Survey add = new Survey();
+            add.ArtistName = survey.ArtistName;
+            add.FavoriteGenre1 = survey.FavoriteGenre1;
+            add.FavoriteGenre2 = survey.FavoriteGenre2;
+            add.FavoriteGenre3 = survey.FavoriteGenre3;
+            var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.UserProfiles.Where(x => x.UserId == userid).FirstOrDefault();
+            add.UserId = user.UserProfileId;
+
+            _context.AddAsync(add);
             _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
