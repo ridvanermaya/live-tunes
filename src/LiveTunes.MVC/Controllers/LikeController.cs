@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LiveTunes.MVC.Data;
 using LiveTunes.MVC.Models;
+using System.Security.Claims;
 
 namespace LiveTunes.MVC.Controllers
 {
@@ -62,16 +63,23 @@ namespace LiveTunes.MVC.Controllers
         public async Task<IActionResult> Create(int id)
         {
             Event likedEvent = _context.Events.Where(x => x.EventId == id).FirstOrDefault();
+            if(likedEvent != null)
+            {
+
+            }
             Like likeObject = new Like();
             likeObject.EventId = id;
             likeObject.Event = likedEvent;
+            var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userProfile = _context.UserProfiles.Where(x => x.UserId == userid).FirstOrDefault();
+            likeObject.UserId = userProfile.UserProfileId;
             //forget how to do this
            // likeObject.UserId;
             if (ModelState.IsValid)
             {
                 _context.Likes.Add(likeObject);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                
             }
             
             return RedirectToAction("Details", "Event", id);
