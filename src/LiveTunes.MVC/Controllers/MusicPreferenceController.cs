@@ -57,6 +57,7 @@ namespace LiveTunes.MVC.Controllers
             preference.UserId = user.UserProfileId;
             preference.User = user;
             await _context.MusicPreferences.AddAsync(preference);
+            await _context.SaveChangesAsync();
         }
 
 

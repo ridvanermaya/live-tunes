@@ -98,3 +98,5 @@ C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcor
 C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\LiveTunes.MVC.RazorTargetAssemblyInfo.cs
 C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\LiveTunes.MVC.Views.pdb
 C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\LiveTunes.MVC.csproj.CopyComplete
+C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\UserProfile\Create.g.cshtml.cs
+C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\Razor\Views\UserProfile\Index.g.cshtml.cs

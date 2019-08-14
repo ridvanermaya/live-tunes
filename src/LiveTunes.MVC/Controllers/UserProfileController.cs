@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using LiveTunes.MVC.Data;
 using LiveTunes.MVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +12,11 @@ namespace LiveTunes.MVC.Controllers
 {
     public class UserProfileController : Controller
     {
+        private ApplicationDbContext _context;
+        public UserProfileController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         // GET: UserProfile
         public ActionResult Index()
         {
@@ -25,24 +32,24 @@ namespace LiveTunes.MVC.Controllers
         // GET: UserProfile/Create
         public ActionResult Create()
         {
+            //UserProfile add = new UserProfile();
+            
             return View();
         }
 
         // POST: UserProfile/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UserProfile profile)
+        public async Task<ActionResult> Create(UserProfile profile)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            UserProfile add = new UserProfile();
+            add.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            add.FirstName = profile.FirstName;
+            add.LastName = profile.LastName;
+            _context.UserProfiles.Add(add);
+            await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction(nameof(Index)); ;
         }
 
         // GET: UserProfile/Edit/5
@@ -56,7 +63,7 @@ namespace LiveTunes.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
-            try
+            /*try
             {
                 // TODO: Add update logic here
 
@@ -65,7 +72,8 @@ namespace LiveTunes.MVC.Controllers
             catch
             {
                 return View();
-            }
+            }*/
+            return View();
         }
 
         // GET: UserProfile/Delete/5
@@ -75,20 +83,6 @@ namespace LiveTunes.MVC.Controllers
         }
 
         // POST: UserProfile/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }
