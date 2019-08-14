@@ -1,43 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-<<<<<<< HEAD
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LiveTunes.MVC.Models;
 using System.Net.Http.Headers;
 using System.Diagnostics;
-=======
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
->>>>>>> b44727f0f8937937f19b9ff663f7f708175d47f2
 
 namespace LiveTunes.MVC.Controllers
 {
     public class EventController : Controller
     {
-<<<<<<< HEAD
-        private static readonly HttpClient client;
+        private static HttpClient client;
         /*public IEnumerable<Event> events;*/
         static EventController()
         {
-            client = new HttpClient();    
+            client = new HttpClient();
         }
 
         static async Task GetEvents()
         {
             try
+
+
             {
-                
+                string token = "xxxxxxxxxxxxxxxx";
 
-                var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue");
-                requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                /*var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue/");*/
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue/");
 
-                HttpResponseMessage response = await client.SendAsync(requestMessage);
+                Debug.WriteLine(result);
+                //://www.eventbriteapi.com/v3/events/search
 
-                Debug.WriteLine(response.Content.ReadAsStringAsync());
 
             }
             catch(HttpRequestException e)
