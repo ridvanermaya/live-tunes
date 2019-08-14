@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using LiveTunes.MVC.Data;
+using LiveTunes.MVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
@@ -43,9 +44,14 @@ namespace LiveTunes.MVC.Controllers
             return View(suggestedSongs);
         }
 
-        public ActionResult Like()
+        public async Task Create(string artist, string songName, string genre)
         {
-            return RedirectToAction("Index");
+            MusicPreference preference = new MusicPreference();
+            preference.SongName = songName;
+            preference.ArtistName = artist;
+            preference.Genre = genre;
+            await _context.MusicPreferences.AddAsync(preference);
+            return;
         }
 
 
