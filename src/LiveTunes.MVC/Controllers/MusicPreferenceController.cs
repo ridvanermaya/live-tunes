@@ -46,6 +46,8 @@ namespace LiveTunes.MVC.Controllers
             return View(suggestedSongs);
         }
 
+
+        [HttpPost]
         public async Task Create(string artist, string songName, string genre)
         {
             MusicPreference preference = new MusicPreference();
