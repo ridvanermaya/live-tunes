@@ -12,11 +12,8 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="SurverId" class="control-label"></label>
-                <input asp-for="SurverId" class="form-control" />
-                <span asp-validation-for="SurverId" class="text-danger"></span>
-            </div>
+            
+            
             <div class="form-group">
                 <label asp-for="ArtistName" class="control-label"></label>
                 <input asp-for="ArtistName" class="form-control" />
@@ -37,11 +34,7 @@
                 <input asp-for="FavoriteGenre3" class="form-control" />
                 <span asp-validation-for="FavoriteGenre3" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <input asp-for="UserId" class="form-control" />
-                <span asp-validation-for="UserId" class="text-danger"></span>
-            </div>
+          
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
