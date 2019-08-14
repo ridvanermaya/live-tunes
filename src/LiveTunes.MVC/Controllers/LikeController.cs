@@ -27,13 +27,13 @@ namespace LiveTunes.MVC.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        public async Task<IActionResult> Details(int? id)
-        {
-            Event e;
-            //e = await _context.Events.Where(x => x.EventId == id).FirstOrDefaultAsync();
-            var likes = _context.Likes.Where(x => x.EventId == id);
-            return View(likes);
-        }
+        // public async Task<IActionResult> Details(int? id)
+        // {
+        //     Event e;
+        //     e = await _context.Events.Where(x => x.EventId == id).FirstOrDefaultAsync();
+        //     var likes = _context.Likes.Where(x => x.EventId == id);
+        //     return View(likes);
+        // }
         // GET: Like/Create
         public IActionResult Create()
         {

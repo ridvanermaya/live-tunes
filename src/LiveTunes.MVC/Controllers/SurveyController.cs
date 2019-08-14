@@ -54,8 +54,8 @@ namespace LiveTunes.MVC.Controllers
             var user = _context.UserProfiles.Where(x => x.UserId == userid).FirstOrDefault();
             add.UserId = user.UserProfileId;
 
-            _context.AddAsync(add);
-            _context.SaveChangesAsync();
+            await _context.AddAsync(add);
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
     }
