@@ -27,26 +27,13 @@ namespace LiveTunes.MVC.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Like/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var like = await _context.Likes
-                .Include(l => l.Event)
-                .Include(l => l.UserProfile)
-                .FirstOrDefaultAsync(m => m.LikeId == id);
-            if (like == null)
-            {
-                return NotFound();
-            }
-
-            return View(like);
+            Event e;
+            //e = await _context.Events.Where(x => x.EventId == id).FirstOrDefaultAsync();
+            var likes = _context.Likes.Where(x => x.EventId == id);
+            return View(likes);
         }
-
         // GET: Like/Create
         public IActionResult Create()
         {
@@ -106,59 +93,7 @@ namespace LiveTunes.MVC.Controllers
         // POST: Like/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LikeId,EventId,UserId")] Like like)
-        {
-            if (id != like.LikeId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(like);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!LikeExists(like.LikeId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["EventId"] = new SelectList(_context.Events, "EventId", "EventId", like.EventId);
-            ViewData["UserId"] = new SelectList(_context.UserProfiles, "UserProfileId", "UserProfileId", like.UserId);
-            return View(like);
-        }
-
-        // GET: Like/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var like = await _context.Likes
-                .Include(l => l.Event)
-                .Include(l => l.UserProfile)
-                .FirstOrDefaultAsync(m => m.LikeId == id);
-            if (like == null)
-            {
-                return NotFound();
-            }
-
-            return View(like);
-        }
+        
 
         // POST: Like/Delete/5
         [HttpPost, ActionName("Delete")]
