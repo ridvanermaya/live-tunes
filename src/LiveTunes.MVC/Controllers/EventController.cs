@@ -11,38 +11,44 @@ using Microsoft.AspNetCore.Http;
 using LiveTunes.MVC.Data;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace LiveTunes.MVC.Controllers
 {
     public class EventController : Controller
     {
-        private readonly HttpClient client;
-        private readonly ApplicationDbContext _context;
+        private static HttpClient client;
+
         /*public IEnumerable<Event> events;*/
         public EventController(ApplicationDbContext context)
         {
             client = new HttpClient();
-            _context = context;
 
-            if (_context.Events.Count() == 0)
+            if (context.Events.Count() == 0)
             {
-                _context.Events.Add(new Event { Latitude = 49.2746619, Longitude = -123.10921740000003, EventName = "King Gizzard and the Lizard Wizard" , DateTime = DateTime.Now, Genre = "Sci-Fi"});
-                _context.Events.Add(new Event { Latitude = 49.2746619, Longitude = -123.0451041, EventName = "King Gizzard and the Lizard Wizard" , DateTime = DateTime.Now, Genre = "Sci-Fi"});
+                context.Events.Add(new Event { Latitude = 49.2746619, Longitude = -123.10921740000003, EventName = "King Gizzard and the Lizard Wizard" , DateTime = DateTime.Now, Genre = "Sci-Fi"});
+                context.Events.Add(new Event { Latitude = 49.2746619, Longitude = -123.0451041, EventName = "King Gizzard and the Lizard Wizard" , DateTime = DateTime.Now, Genre = "Sci-Fi"});
             }
         }
 
-        public async Task GetEvents()
+        static async Task GetEvents()
+
         {
             try
             {
+                string token = "xxxxxxxxxxxxxxxx";
+
+                /*var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue/");*/
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue/");
+
                 var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue");
                 //requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-                HttpResponseMessage response = await client.SendAsync(requestMessage);
+                Debug.WriteLine(result);
+                //://www.eventbriteapi.com/v3/events/search
 
                 // var events = _context.Events.Include(x => x.Likes).Where(x => x.EventId == 5).ToList();
                 // var likes = _context.Likes.Where(x => x.EventId == 5).OrderByDescending(x => x.LikeId).Take(20);
-
-                Debug.WriteLine(response.Content.ReadAsStringAsync());
 
             }
             catch (HttpRequestException e)
@@ -50,6 +56,7 @@ namespace LiveTunes.MVC.Controllers
                 Debug.WriteLine(e.Message);
             }
         }
+
 
         public async Task<IActionResult> Index()
         {
