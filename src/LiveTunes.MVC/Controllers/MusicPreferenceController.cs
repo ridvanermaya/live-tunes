@@ -1,18 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using LiveTunes.MVC.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace LiveTunes.MVC.Controllers
 {
     public class MusicPreferenceController : Controller
     {
+        private HttpClient client;
+        private JToken suggestedSongs;
+        private ApplicationDbContext _context;
+
+        public MusicPreferenceController(ApplicationDbContext context)
+        {
+            client = new HttpClient();
+            GetSongs("Rock");
+            _context = context;
+            suggestedSongs = new JArray();
+        }
+
+        public JToken GetSuggestedSongs()
+        {
+            return suggestedSongs;
+        }
+
+        public async void GetSongs(string genre)
+        {
+            //client.DefaultRequestHeaders.Add(new MediaTypeWithQualityHeaderValue("jsonp"));
+            HttpResponseMessage response = await client.GetAsync("http://itunes.apple.com/search?term=Jack+Johnson?callback=?");
+            suggestedSongs = await response.Content.ReadAsAsync<String>();
+        }
+
         //Main View Where it Goes thru songs based on genres they like
         public ActionResult Index()
         {
-            return View();
+            return View(suggestedSongs);
         }
 
         public ActionResult Like()

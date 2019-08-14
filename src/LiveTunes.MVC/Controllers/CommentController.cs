@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LiveTunes.MVC.Data;
 using LiveTunes.MVC.Models;
+using System.Security.Claims;
 
 namespace LiveTunes.MVC.Controllers
 {
@@ -20,7 +21,7 @@ namespace LiveTunes.MVC.Controllers
         }
 
         // GET: Comment
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int eventId)
         {
             var applicationDbContext = _context.Comments.Include(c => c.Event).Include(c => c.UserProfile);
             return View(await applicationDbContext.ToListAsync());
@@ -63,6 +64,10 @@ namespace LiveTunes.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                var applicationUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var userProfile = await _context.UserProfiles.FirstOrDefaultAsync(x => x.UserId == applicationUserId);
+                
+                comment.UserId = userProfile.UserProfileId;
                 _context.Add(comment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
