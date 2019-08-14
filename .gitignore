@@ -3,6 +3,7 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+appconfig.json
 # User-specific files
 *.suo
 *.user
@@ -329,4 +330,4 @@ ASALocalRun/
 .mfractor/
 
 EventbriteAPIToken.cs
-src/.vs/LiveTunes/DesignTimeBuild/.dtbcache src/.vs/LiveTunes/v16/.suo src/.vs/LiveTunes/v16/Server/sqlite3/storage.ide src/.vs/LiveTunes/v16/Server/sqlite3/storage.ide-shm src/.vs/LiveTunes/v16/Server/sqlite3/storage.ide-wal
+storage.ide-wal
