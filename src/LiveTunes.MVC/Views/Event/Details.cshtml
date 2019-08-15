@@ -20,11 +20,14 @@
             <div class="col-3">
                 <img />
             </div>
-            <div class="col-9">
+            <div class="col-6">
                 <h5 class="card-title">Name: @Model.EventName</h5>
                 <h5 class="card-title">Date: @Model.DateTime.ToString("dd.MM.yyyy")</h5>
                 <h5 class="card-title">Time: @Model.DateTime.ToString("HH:mm")</h5>
                 <h5 class="card-title">Genre: @Model.Genre</h5>
+            </div>
+            <div class="col-3">
+                <!-- Map -->
             </div>
         </div>
     </div>
@@ -44,28 +47,20 @@
                     <button type="submit" class="btn btn-sm btn-outline-primary"><i class="fa fa-thumbs-up"></i> Like (@Model.LikeCount)</button>
                 }
             }
+            <button type="submit" class="btn btn-sm btn-outline-secondary" disabled>@Model.Comments.Count() Comments</button>
         </form> 
     </div>
 </div>
 @foreach (var item in Model.Comments) {
-    <div class"card">
-        <div class="card-body">
-            <div class="card-body">
-                <p class="card-text">@Html.DisplayFor(modelItem => item.CommentText)
-                <p class="card-text">@Html.DisplayFor(modelItem => item.DateTime)
-                <p class="card-text">@Html.ActionLink("Delete", "Delete", new { })
-            </div>
+    <div class="card col-8 border-secondary" style="width: 100%; margin: auto; margin-top: 10px;">
+        <div class="card-body" style="padding: 5px;">
+            <p class="card-text text-muted">@Html.DisplayFor(modelItem => item.DateTime) - @ViewBag.UserFirstName @ViewBag.UserLastName</p>
+            <p class="card-text shadow" style="padding: 3px; border-radius: 5px; margin-bottom: 5px;">@Html.DisplayFor(modelItem => item.CommentText)</p>
+            <!-- Will be worked on later -->
+            <!-- <p class="card-text">@Html.ActionLink("Delete", "Delete", new {})</p> -->
         </div>
     </div>
 }
-<div class="card">
-    <div class="card-body">
-        <div class="card-body">
-            <p class="card-text"> @Model.Comments.Count()</p>
-            <p class="card-text"> @Model.Comments[0].CommentText</p>
-        </div>
-    </div>
-</div>
 
 <!-- <form asp-controller="Event" asp-action="Like" asp-route-id="@Model.EventId" method="POST">
             <button type="submit" class="btn btn-md btn-outline-primary">Comment</button>

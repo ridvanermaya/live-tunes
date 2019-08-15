@@ -64,8 +64,11 @@ namespace LiveTunes.MVC.Controllers
             if (evnt == null) return NotFound();
 
             
-            var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userProfileId = _context.UserProfiles.Where(x => x.UserId == userid).FirstOrDefault().UserProfileId;
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userProfileId = _context.UserProfiles.Where(x => x.UserId == userId).FirstOrDefault().UserProfileId;
+            var userProfile = await _context.UserProfiles.FirstOrDefaultAsync(x => x.UserId == userId);
+            ViewBag.UserFirstName = userProfile.FirstName;
+            ViewBag.UserLastName = userProfile.LastName;
 
 
             evnt.LikeCount = await _context.Likes.CountAsync(x => x.EventId == id);
