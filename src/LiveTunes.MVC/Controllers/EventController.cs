@@ -12,6 +12,7 @@ using LiveTunes.MVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Security.Claims;
+using Newtonsoft.Json.Linq;
 
 namespace LiveTunes.MVC.Controllers
 {
@@ -19,6 +20,7 @@ namespace LiveTunes.MVC.Controllers
     {
         private static HttpClient client;
         private readonly ApplicationDbContext _context;
+        public dynamic results;
 
         /*public IEnumerable<Event> events;*/
         public EventController(ApplicationDbContext context)
@@ -35,26 +37,28 @@ namespace LiveTunes.MVC.Controllers
             context.SaveChangesAsync();*/
         }
 
-        static async Task GetEvents()
-
+        static async Task<object> GetEvents()
         {
             try
             {
-                var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue&token=" + EventbriteAPIToken.Token);
+                var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.longitude=-87.90404749999999&location.latitude=43.029494&expand=venue&location.within=30mi&token=" + EventbriteAPIToken.Token);
 
-                var x = JsonConvert.DeserializeObject(result);
+                var data = JsonConvert.DeserializeObject<JObject>(result);
+                var eventName = data["events"];
+                return data;
             }
             catch (HttpRequestException e)
             {
-                Debug.WriteLine(e.Message);
+                return e;
             }
         }
 
 
         public async Task<IActionResult> Index()
         {
-            await GetEvents();
+            var results = await GetEvents();
             var events = await _context.Events.FirstOrDefaultAsync();
+
 
             return View();
         }
