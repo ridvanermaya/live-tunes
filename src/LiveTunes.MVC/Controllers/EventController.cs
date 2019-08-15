@@ -25,13 +25,14 @@ namespace LiveTunes.MVC.Controllers
         {
             client = new HttpClient();
             _context = context;
-
+            
+            /*
             if (context.Events.Count() <= 1)
             {
                 context.Events.Add(new Event { Latitude = 49.2746619, Longitude = -123.10921740000003, EventName = "King Gizzard and the Lizard Wizard" , DateTime = DateTime.Now, Genre = "Post Punk"});
                 context.Events.Add(new Event { Latitude = 49.2746619, Longitude = -123.0451041, EventName = "King Gizzard and the Lizard Wizard" , DateTime = DateTime.Now, Genre = "Post Punk"});
             }
-            context.SaveChangesAsync();
+            context.SaveChangesAsync();*/
         }
 
         static async Task GetEvents()
@@ -88,7 +89,7 @@ namespace LiveTunes.MVC.Controllers
             var like = await _context.Likes.FirstOrDefaultAsync(x => x.UserId == userProfileId && x.EventId == id);
             if (like != null)
             {
-                _context.Remove(like);
+                _context.Likes.Remove(like);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Details", new { id });
             }
