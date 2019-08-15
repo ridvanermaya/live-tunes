@@ -99,3 +99,4 @@ C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcor
 C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\LiveTunes.MVC.RazorTargetAssemblyInfo.cs
 C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\LiveTunes.MVC.Views.pdb
 C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\LiveTunes.MVC.csproj.CopyComplete
+C:\Users\Vincent\Desktop\LiveTunes\live-tunes\src\LiveTunes.MVC\obj\Debug\netcoreapp2.2\LiveTunes.MVC.csprojAssemblyReference.cache

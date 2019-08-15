@@ -63,7 +63,10 @@ namespace LiveTunes.MVC.Controllers
             var evnt = await _context.Events.FirstOrDefaultAsync(x => x.EventId == id);
             if (evnt == null) return NotFound();
 
-            var userProfileId = 2;
+            
+            var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userProfileId = _context.UserProfiles.Where(x => x.UserId == userid).FirstOrDefault().UserProfileId;
+
 
             evnt.LikeCount = await _context.Likes.CountAsync(x => x.EventId == id);
             evnt.UserLiked = await _context.Likes.AnyAsync(x => x.EventId == id && x.UserId == userProfileId);

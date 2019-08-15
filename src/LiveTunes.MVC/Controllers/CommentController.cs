@@ -77,6 +77,12 @@ namespace LiveTunes.MVC.Controllers
             return View(comment);
         }
 
+        public async Task<List<Comment>> List( int id )
+        {
+            var comments = _context.Comments.Where(x => x.EventId == id);
+            return comments.ToList();
+        }
+
         // GET: Comment/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
