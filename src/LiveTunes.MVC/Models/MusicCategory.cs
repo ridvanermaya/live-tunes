@@ -7,6 +7,10 @@ namespace LiveTunes.MVC.Models
 {
     public class MusicCategory
     {
+        public MusicCategory()
+        {
+
+        }
         public MusicCategory(int id, string name)
         {
             this.Id = id;
