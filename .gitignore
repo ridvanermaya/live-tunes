@@ -333,3 +333,5 @@ EventbriteAPIToken.cs
 storage.ide-wal
 
 appsettings.json
+
+GoogleMapsAPIToken.cs

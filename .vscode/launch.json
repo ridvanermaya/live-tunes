@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/src/LiveTunes.WebAPI/bin/Debug/netcoreapp2.2/LiveTunes.WebAPI.dll",
+            "program": "${workspaceFolder}/src/LiveTunes.MVC/bin/Debug/netcoreapp2.2/LiveTunes.MVC.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/LiveTunes.WebAPI",
+            "cwd": "${workspaceFolder}/src/LiveTunes.MVC",
             "stopAtEntry": false,
             // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
             "serverReadyAction": {

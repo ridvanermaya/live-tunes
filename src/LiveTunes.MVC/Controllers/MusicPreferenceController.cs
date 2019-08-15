@@ -17,7 +17,6 @@ namespace LiveTunes.MVC.Controllers
     public class MusicPreferenceController : Controller
     {
         private HttpClient client;
-        private JToken suggestedSongs;
         private ApplicationDbContext _context;
 
         public MusicPreferenceController(ApplicationDbContext context)
@@ -25,12 +24,6 @@ namespace LiveTunes.MVC.Controllers
             client = new HttpClient();
             // GetSongs("Rock");
             _context = context;
-            suggestedSongs = new JArray();
-        }
-
-        public JToken GetSuggestedSongs()
-        {
-            return suggestedSongs;
         }
 
         // public async void GetSongs(string genre)
@@ -41,8 +34,11 @@ namespace LiveTunes.MVC.Controllers
         // }
 
         //Main View Where it Goes thru songs based on genres they like
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            List<MusicPreference> suggestedSongs = await GetPreferences();
+
+            //TODO: List of all suggested songs
             return View(suggestedSongs);
         }
 
@@ -58,6 +54,15 @@ namespace LiveTunes.MVC.Controllers
             preference.User = user;
             await _context.MusicPreferences.AddAsync(preference);
             await _context.SaveChangesAsync();
+        }
+
+        [HttpGet]
+        public async Task<List<MusicPreference>> GetPreferences() {
+            var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = await _context.UserProfiles.Where(x => x.UserId == userid).FirstOrDefaultAsync();
+            var musicPreferenceData = _context.MusicPreferences.Where(x => x.UserId == user.UserProfileId);
+            //JArray data = new JArray(musicPreferenceData);
+            return musicPreferenceData.ToList();
         }
 
 
