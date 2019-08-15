@@ -35,19 +35,17 @@ namespace LiveTunes.MVC.Controllers
         //     return View(likes);
         // }
         // GET: Like/Create
-        public IActionResult Create()
+        /*public IActionResult Create()
         {
             ViewData["EventId"] = new SelectList(_context.Events, "EventId", "EventId");
             ViewData["UserId"] = new SelectList(_context.UserProfiles, "UserProfileId", "UserProfileId");
             return View();
-        }
+        }*/
 
-        // POST: Like/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int id)
+       
+        [HttpGet, ActionName("dolike")]
+       
+        public async Task Create(int id)
         {
             Event likedEvent = _context.Events.Where(x => x.EventId == id).FirstOrDefault();
             if(likedEvent != null)
@@ -60,6 +58,7 @@ namespace LiveTunes.MVC.Controllers
             var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userProfile = _context.UserProfiles.Where(x => x.UserId == userid).FirstOrDefault();
             likeObject.UserId = userProfile.UserProfileId;
+            
             //forget how to do this
            // likeObject.UserId;
             if (ModelState.IsValid)
@@ -69,7 +68,7 @@ namespace LiveTunes.MVC.Controllers
                 
             }
             
-            return RedirectToAction("Details", "Event", id);
+            //return RedirectToAction("Details", "Event", id);
         }
 
         // GET: Like/Edit/5

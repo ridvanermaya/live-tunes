@@ -26,11 +26,12 @@ namespace LiveTunes.MVC.Controllers
             client = new HttpClient();
             _context = context;
 
-            /*if (context.Events.Count() == 0)
+            if (context.Events.Count() <= 1)
             {
-                context.Events.Add(new Event { Latitude = 49.2746619, Longitude = -123.10921740000003, EventName = "King Gizzard and the Lizard Wizard" , DateTime = DateTime.Now, Genre = "Sci-Fi"});
-                context.Events.Add(new Event { Latitude = 49.2746619, Longitude = -123.0451041, EventName = "King Gizzard and the Lizard Wizard" , DateTime = DateTime.Now, Genre = "Sci-Fi"});
-            }*/
+                context.Events.Add(new Event { Latitude = 49.2746619, Longitude = -123.10921740000003, EventName = "King Gizzard and the Lizard Wizard" , DateTime = DateTime.Now, Genre = "Post Punk"});
+                context.Events.Add(new Event { Latitude = 49.2746619, Longitude = -123.0451041, EventName = "King Gizzard and the Lizard Wizard" , DateTime = DateTime.Now, Genre = "Post Punk"});
+            }
+            context.SaveChangesAsync();
         }
 
         static async Task GetEvents()
@@ -38,16 +39,9 @@ namespace LiveTunes.MVC.Controllers
         {
             try
             {
-<<<<<<< HEAD
                 var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue&token=" + EventbriteAPIToken.Token);
 
                 var x = JsonConvert.DeserializeObject(result);
-=======
-              // var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue&token=" + EventbriteAPIToken.Token);
-
-               // var x = JsonConvert.DeserializeObject(result);
->>>>>>> 452f050d823e8bdff75261121ea1fe9f559b8e5c
-
             }
             catch (HttpRequestException e)
             {
@@ -60,7 +54,6 @@ namespace LiveTunes.MVC.Controllers
         {
             await GetEvents();
             var events = await _context.Events.FirstOrDefaultAsync();
-            Console.WriteLine(events.EventId);
 
             return View();
         }
