@@ -15,3 +15,18 @@ function getComments(EventId) {
         }
     });
 }
+
+var text = "";
+function updateComment() {
+    text = document.getElementById("comment").value;
+};
+
+function addComment() {
+    $.ajax({
+        type: "GET",
+        url: "https://localhost:44303/comment/Create/?EventId=" + EventId + "&text=" + text,
+        success: function (data) {
+            console.log("works");
+        },
+    });
+}
