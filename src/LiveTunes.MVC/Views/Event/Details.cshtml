@@ -3,52 +3,38 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h1>Details</h1>
-
-<div>
-    <h4>Event</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Latitude)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Latitude)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Longitude)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Longitude)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EventName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EventName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateTime)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateTime)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Genre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Genre)
-        </dd>
-    </dl>
-    <div>
-        <form method="POST">
-            <input type="button" value="like"/>
-            <input type="hidden" value="@Model.EventId"/>
+<div class="card">
+    <div class="card-header">
+        Event Name
+    </div>
+    <div class="card-body container">
+        <div class="row">
+            <div class="col-3">
+                <img />
+            </div>
+            <div class="col-9">
+                <h5 class="card-title">Name: @Model.EventName</h5>
+                <h5 class="card-title">Date: @Model.DateTime.ToString("dd.MM.yyyy")</h5>
+                <h5 class="card-title">Time: @Model.DateTime.ToString("HH:mm")</h5>
+                <h5 class="card-title">Genre: @Model.Genre</h5>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <form asp-controller="Event" asp-action="Like" asp-route-id="@Model.EventId" method="POST">
+            @if(Model.LikeCount == 0){
+                <button type="submit" class="btn btn-sm btn-secondary"><i class="fa fa-thumbs-up"></i> Do you want to be the first?</button>
+            }
+            else
+            {
+                if (Model.UserLiked)
+                {
+                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa fa-thumbs-down"></i> Unlike (@Model.LikeCount)</button>
+                }
+                else {
+                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-thumbs-up"></i> Like (@Model.LikeCount)</button>
+                }
+            }
         </form>
     </div>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.EventId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
 </div>
