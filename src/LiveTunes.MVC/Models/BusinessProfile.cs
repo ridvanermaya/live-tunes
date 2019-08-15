@@ -9,6 +9,7 @@ namespace LiveTunes.MVC.Models
     {
         [Key]
         public int BusinessProfileId { get; set; }
+        public int VenueId { get; set; }
         [Display(Name = "Business Name")]
         public string BusinessName { get; set; }
         [ForeignKey(nameof(User))]
