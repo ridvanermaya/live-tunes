@@ -42,15 +42,15 @@ namespace LiveTunes.MVC.Controllers
             return View();
         }*/
 
-       
+
         [HttpGet, ActionName("dolike")]
-       
         public async Task Create(int id)
         {
             Event likedEvent = _context.Events.Where(x => x.EventId == id).FirstOrDefault();
-            if(likedEvent != null)
+            if (likedEvent != null)
             {
-
+                await Delete(id);
+                return;
             }
             Like likeObject = new Like();
             likeObject.EventId = id;
@@ -58,17 +58,24 @@ namespace LiveTunes.MVC.Controllers
             var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userProfile = _context.UserProfiles.Where(x => x.UserId == userid).FirstOrDefault();
             likeObject.UserId = userProfile.UserProfileId;
-            
+
             //forget how to do this
-           // likeObject.UserId;
+            // likeObject.UserId;
             if (ModelState.IsValid)
             {
                 _context.Likes.Add(likeObject);
                 await _context.SaveChangesAsync();
-                
+
             }
-            
-            //return RedirectToAction("Details", "Event", id);
+        }
+
+        private async Task Delete(int? id)
+        {
+            var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userProfileId = _context.UserProfiles.Where(x => x.UserId == userid).FirstOrDefault().UserProfileId;
+            var removeLike = await _context.Likes.Where(x => x.UserId == userProfileId && x.EventId == id).FirstOrDefaultAsync();
+            _context.Likes.Remove(removeLike);
+            await _context.SaveChangesAsync();
         }
 
         // GET: Like/Edit/5
