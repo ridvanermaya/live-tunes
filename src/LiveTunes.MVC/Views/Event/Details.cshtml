@@ -3,6 +3,15 @@
 @{
     ViewData["Title"] = "Details";
 }
+<script>
+    var EventId = @Model.EventId
+</script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+<script src="~/js/comment.js"></script>
+<script src="~/js/like.js"></script>
+
 <div class="card">
     <div class="card-header">
         Event Name
@@ -17,6 +26,7 @@
                 <h5 class="card-title">Date: @Model.DateTime.ToString("dd.MM.yyyy")</h5>
                 <h5 class="card-title">Time: @Model.DateTime.ToString("HH:mm")</h5>
                 <h5 class="card-title">Genre: @Model.Genre</h5>
+                <h5 class="card-title">Description @Model.Description</h5>
             </div>
         </div>
     </div>
@@ -37,4 +47,14 @@
             }
         </form>
     </div>
+
+    <div>
+        <h1 id="comments"></h1>
+    </div>
+    <input id="comment" type="textarea" onchange="updateComment()"/>
+    <input onclick=addComment() type="button" value="Add Comment" style="text-align: center; width: 100%; background-color: green"/>
 </div>
+
+<script>
+    getComments(@Model.EventId);
+</script>

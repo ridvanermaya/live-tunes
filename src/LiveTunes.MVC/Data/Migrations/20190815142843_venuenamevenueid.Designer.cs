@@ -4,14 +4,16 @@ using LiveTunes.MVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace LiveTunes.MVC.Data.Migrations
+namespace LiveTunes.MVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190815142843_venuenamevenueid")]
+    partial class venuenamevenueid
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,8 +55,6 @@ namespace LiveTunes.MVC.Data.Migrations
                     b.Property<string>("BusinessName");
 
                     b.Property<string>("UserId");
-
-                    b.Property<int>("VenueId");
 
                     b.HasKey("BusinessProfileId");
 
@@ -376,7 +376,7 @@ namespace LiveTunes.MVC.Data.Migrations
             modelBuilder.Entity("LiveTunes.MVC.Models.Comment", b =>
                 {
                     b.HasOne("LiveTunes.MVC.Models.Event", "Event")
-                        .WithMany("Comments")
+                        .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade);
 
