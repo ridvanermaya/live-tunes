@@ -15,16 +15,22 @@
     x = navigator.geolocation;
 
     x.getCurrentPosition(success, failure);
-
-    function success(position) {
-        var myLat = position.coords.latitude;
+    var myLat = position.coords.latitude;
         var myLong = position.coords.longitude;
+    function success(position) {
+        myLat = position.coords.latitude;
+        myLong = position.coords.longitude;
         console.log(position);
     }
 
     function failure() {
         alert("Could not retrieve location.");
     }
+
+    $.ajax({
+        type: "GET",
+        url: "https://localhost:8080/event/getEvents/?lat=" + myLat + "&lon=" + myLon
+    })
 
 </script>
 
