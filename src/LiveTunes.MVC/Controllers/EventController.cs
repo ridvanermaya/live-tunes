@@ -70,7 +70,7 @@ namespace LiveTunes.MVC.Controllers
 
             evnt.LikeCount = await _context.Likes.CountAsync(x => x.EventId == id);
             evnt.UserLiked = await _context.Likes.AnyAsync(x => x.EventId == id && x.UserId == userProfileId);
-
+            
             return View(evnt);
         }
 

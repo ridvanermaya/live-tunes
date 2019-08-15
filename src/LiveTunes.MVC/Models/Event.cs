@@ -8,6 +8,9 @@ namespace LiveTunes.MVC.Models
     [Table("Event")]
     public class Event
     {
+        public int VenueId { get; set; }
+        [Display(Name = "Venue Name")]
+        public string Venue { get; set; }
         [Key]
         public int EventId { get; set; }
         [Display(Name = "Latitude")]
