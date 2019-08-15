@@ -12,8 +12,8 @@
 <script src="~/js/comment.js"></script>
 
 <div class="card">
-    <div class="card-header">
-        Event Name
+    <div class="card-header text-center">
+        @Model.EventName
     </div>
     <div class="card-body container">
         <div class="row">
@@ -30,7 +30,8 @@
     </div>
     <div class="card-footer">
         <form asp-controller="Event" asp-action="Like" asp-route-id="@Model.EventId" method="POST">
-            @if(Model.LikeCount == 0){
+            @if(Model.LikeCount == 0)
+            {
                 <button type="submit" class="btn btn-sm btn-secondary"><i class="fa fa-thumbs-up"></i> Do you want to be the first?</button>
             }
             else
@@ -40,20 +41,41 @@
                     <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fa fa-thumbs-down"></i> Unlike (@Model.LikeCount)</button>
                 }
                 else {
-                    <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-thumbs-up"></i> Like (@Model.LikeCount)</button>
+                    <button type="submit" class="btn btn-sm btn-outline-primary"><i class="fa fa-thumbs-up"></i> Like (@Model.LikeCount)</button>
                 }
             }
-        </form>
-
-        
+        </form> 
     </div>
-
-    <div>
-        <h1 id="comments"></h1>
-    </div>
-    <input id="comment" type="textarea" onchange="updateComment()"/>
-    <input onclick=addComment() type="button" value="Add Comment" style="text-align: center; width: 100%; background-color: green"/>
 </div>
+@foreach (var item in Model.Comments) {
+    <div class"card">
+        <div class="card-body">
+            <div class="card-body">
+                <p class="card-text">@Html.DisplayFor(modelItem => item.CommentText)
+                <p class="card-text">@Html.DisplayFor(modelItem => item.DateTime)
+                <p class="card-text">@Html.ActionLink("Delete", "Delete", new { })
+            </div>
+        </div>
+    </div>
+}
+<div class="card">
+    <div class="card-body">
+        <div class="card-body">
+            <p class="card-text"> @Model.Comments.Count()</p>
+            <p class="card-text"> @Model.Comments[0].CommentText</p>
+        </div>
+    </div>
+</div>
+
+<!-- <form asp-controller="Event" asp-action="Like" asp-route-id="@Model.EventId" method="POST">
+            <button type="submit" class="btn btn-md btn-outline-primary">Comment</button>
+        </form>  -->
+
+<div>
+    <h1 id="comments"></h1>
+</div>
+<input id="comment" type="textarea" onchange="updateComment()"/>
+<input onclick=addComment() type="button" value="Add Comment" style="text-align: center; width: 100%; background-color: green"/>
 
 <script>
     getComments(@Model.EventId);
