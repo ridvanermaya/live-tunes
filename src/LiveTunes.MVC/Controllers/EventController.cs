@@ -35,14 +35,12 @@ namespace LiveTunes.MVC.Controllers
         {
             try
             {
-              // var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue&token=" + EventbriteAPIToken.Token);
-
-               // var x = JsonConvert.DeserializeObject(result);
-
+                var result = await client.GetStringAsync("https://www.eventbriteapi.com/v3/events/search?location.address=vancovuer&location.within=10km&expand=venue&token=" + EventbriteAPIToken.Token);
+                var deserializedResults = JsonConvert.DeserializeObject(result);    
             }
             catch (HttpRequestException e)
             {
-                Debug.WriteLine(e.Message);
+                
             }
         }
 
