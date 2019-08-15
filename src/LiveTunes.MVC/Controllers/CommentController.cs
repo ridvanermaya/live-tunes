@@ -95,7 +95,7 @@ namespace LiveTunes.MVC.Controllers
         public async Task<List<Comment>> List( int id )
         {
             var comments = _context.Comments.Where(x => x.EventId == id);
-            return comments.ToList();
+            return await comments.ToListAsync();
         }
 
         // GET: Comment/Edit/5
