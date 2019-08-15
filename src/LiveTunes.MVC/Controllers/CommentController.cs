@@ -48,17 +48,17 @@ namespace LiveTunes.MVC.Controllers
         }
 
         // GET: Comment/Create
-        public IActionResult Create()
+        /*public IActionResult Create()
         {
             ViewData["EventId"] = new SelectList(_context.Events, "EventId", "EventId");
             ViewData["UserId"] = new SelectList(_context.UserProfiles, "UserProfileId", "UserProfileId");
             return View();
-        }
+        }*/
 
         // POST: Comment/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CommentId,CommentText,DateTime,UserId,EventId")] Comment comment)
         {
@@ -75,6 +75,21 @@ namespace LiveTunes.MVC.Controllers
             ViewData["EventId"] = new SelectList(_context.Events, "EventId", "EventId", comment.EventId);
             ViewData["UserId"] = new SelectList(_context.UserProfiles, "UserProfileId", "UserProfileId", comment.UserId);
             return View(comment);
+        }*/
+
+        [HttpGet]
+        public async Task Create( int EventId, string text )
+        {
+            var userid = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userProfileId = _context.UserProfiles.Where(x => x.UserId == userid).FirstOrDefault().UserProfileId;
+
+            Comment createComment = new Comment();
+            createComment.CommentText = text;
+            createComment.EventId = EventId;
+            createComment.UserId = userProfileId;
+
+            _context.Comments.Add(createComment);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<Comment>> List( int id )
