@@ -88,7 +88,7 @@ namespace LiveTunes.MVC.Controllers
             var like = await _context.Likes.FirstOrDefaultAsync(x => x.UserId == userProfileId && x.EventId == id);
             if (like != null)
             {
-                _context.Remove(like);
+                _context.Likes.Remove(like);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Details", new { id });
             }
